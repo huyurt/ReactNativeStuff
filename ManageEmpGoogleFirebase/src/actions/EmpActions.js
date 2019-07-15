@@ -6,5 +6,3 @@ export const employeeUpdate = ({prop, value}) => {
         payload: {prop, value}
     };
 };
-
-export default employeeUpdate;
