@@ -49,7 +49,7 @@ class EmpCreate extends Component {
                 </CardSection>
 
                 <CardSection>
-                    <Button onPress={this.onButtonPress().bind(this)}>
+                    <Button onPress={this.onButtonPress.bind(this)}>
                         Ekle
                     </Button>
                 </CardSection>
