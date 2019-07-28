@@ -70,6 +70,14 @@ class LoginForm extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    errorText: {
+        fontSize: 16,
+        alignSelf: 'center',
+        color: 'red'
+    }
+});
+
 const mapStateToProps = ({auth}) => {
     const {email, password, error, loading} = auth;
     return {email, password, error, loading};
@@ -78,11 +86,3 @@ const mapStateToProps = ({auth}) => {
 export default connect(mapStateToProps, {
     emailChanged, passwordChanged, loginUser
 })(LoginForm);
-
-const styles = StyleSheet.create({
-    errorText: {
-        fontSize: 16,
-        alignSelf: 'center',
-        color: 'red'
-    }
-});
