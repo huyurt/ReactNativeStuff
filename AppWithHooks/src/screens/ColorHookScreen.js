@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, FlatList, View, Button} from 'react-native';
 
-const ColorScreen = () => {
+const ColorHookScreen = () => {
     const [colors, setColors] = useState([]);
 
     return (
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ColorScreen;
+export default ColorHookScreen;

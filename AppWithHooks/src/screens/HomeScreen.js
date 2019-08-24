@@ -18,20 +18,38 @@ const HomeScreen = ({navigation}) => {
             </View>
             <View style={styles.button}>
                 <Button
-                    title='Counter'
-                    onPress={() => navigation.navigate('Counter')}
+                    title='Text Input Hook'
+                    onPress={() => navigation.navigate('TextInputHook')}
                 />
             </View>
             <View style={styles.button}>
                 <Button
-                    title='Color'
-                    onPress={() => navigation.navigate('Color')}
+                    title='Counter Hook'
+                    onPress={() => navigation.navigate('CounterHook')}
                 />
             </View>
             <View style={styles.button}>
                 <Button
-                    title='Square Color'
-                    onPress={() => navigation.navigate('SquareColor')}
+                    title='Counter Reducer Hook'
+                    onPress={() => navigation.navigate('CounterReducerHook')}
+                />
+            </View>
+            <View style={styles.button}>
+                <Button
+                    title='Color Hook'
+                    onPress={() => navigation.navigate('ColorHook')}
+                />
+            </View>
+            <View style={styles.button}>
+                <Button
+                    title='Square Hook Color'
+                    onPress={() => navigation.navigate('SquareColorHook')}
+                />
+            </View>
+            <View style={styles.button}>
+                <Button
+                    title='Square Reducer Hook Color'
+                    onPress={() => navigation.navigate('SquareColorReducerHook')}
                 />
             </View>
         </View>

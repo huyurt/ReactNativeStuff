@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 
-const CounterScreen = () => {
+const CounterHookScreen = () => {
     const [counter, setCounter] = useState(0);
 
     return (
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.container}>
             <View style={styles.button}>
                 <Button
                     title='Arttır'
@@ -24,10 +24,14 @@ const CounterScreen = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     button: {
         width: 100,
         marginVertical: 10
     }
 });
 
-export default CounterScreen;
+export default CounterHookScreen;
