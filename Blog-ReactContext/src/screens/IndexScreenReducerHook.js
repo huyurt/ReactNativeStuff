@@ -1,25 +1,62 @@
 import React, {useContext} from 'react';
-import {StyleSheet, View, Text, FlatList, Button} from 'react-native';
-import BlogContextReducerHook from "../context/BlogContextReducerHook";
+import {StyleSheet, View, Text, FlatList, Button, TouchableOpacity} from 'react-native';
+import {Context} from "../context/BlogContextReducerHook";
+import {Feather} from '@expo/vector-icons';
 
-const IndexScreenStateHook = () => {
-    const {blogPosts, addBlogPost} = useContext(BlogContextReducerHook);
+const IndexScreenStateHook = ({navigation}) => {
+    const {state, deleteBlogPost} = useContext(Context);
 
     return (
         <View>
-            <Text>Index Screen</Text>
-            <Button title='Post Ekle' onPress={addBlogPost}/>
             <FlatList
-                data={blogPosts}
+                data={state}
                 keyExtractor={data => data.title}
                 renderItem={({item}) => {
-                    return <Text>{item.title}</Text>
+                    return (
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('Show', {id: item.id})}
+                        >
+                            <View style={styles.row}>
+                                <Text style={styles.title}>
+                                    {item.title}
+                                </Text>
+                                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                                    <Feather style={styles.icon} name='trash-2'/>
+                                </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
+                    );
                 }}
             />
         </View>
     );
 };
 
-const styles = StyleSheet.create({});
+IndexScreenStateHook.navigationOptions = ({navigation}) => {
+    return {
+        headerRight: (
+            <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+                <Feather name='plus' size={30} style={{marginRight: 5}}/>
+            </TouchableOpacity>
+        )
+    };
+};
+
+const styles = StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 20,
+        paddingHorizontal: 10,
+        borderTopWidth: 1,
+        borderColor: 'gray'
+    },
+    title: {
+        fontSize: 18
+    },
+    icon: {
+        fontSize: 24
+    }
+});
 
 export default IndexScreenStateHook;

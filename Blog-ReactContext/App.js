@@ -3,12 +3,18 @@ import {createStackNavigator, createAppContainer} from "react-navigation";
 // import IndexScreenStateHook from "./src/screens/IndexScreenStateHook";
 import IndexScreenReducerHook from './src/screens/IndexScreenReducerHook';
 // import {BlogProviderStateHook} from "./src/context/BlogContextStateHook";
-import {BlogProviderReducerHook} from "./src/context/BlogContextReducerHook";
+import {Provider} from './src/context/BlogContextReducerHook';
+import ShowScreen from './src/screens/ShowScreen';
+import CreateScreen from "./src/screens/CreateScreen";
+import EditScreen from "./src/screens/EditScreen";
 
 const navigation = createStackNavigator(
     {
         // IndexStateHook: IndexScreenStateHook,
-        IndexReducerHook: IndexScreenReducerHook
+        IndexReducerHook: IndexScreenReducerHook,
+        Show: ShowScreen,
+        Create: CreateScreen,
+        Edit: EditScreen
     },
     {
         initialRouteName: 'IndexReducerHook',
@@ -29,9 +35,9 @@ const App = createAppContainer(navigation);
 // };
 
 export default () => {
-    return(
-      <BlogProviderReducerHook>
-          <App/>
-      </BlogProviderReducerHook>
+    return (
+        <Provider>
+            <App/>
+        </Provider>
     );
 }
