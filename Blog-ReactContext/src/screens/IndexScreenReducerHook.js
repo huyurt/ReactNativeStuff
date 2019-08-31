@@ -1,10 +1,14 @@
-import React, {useContext} from 'react';
-import {StyleSheet, View, Text, FlatList, Button, TouchableOpacity} from 'react-native';
+import React, {useContext, useEffect} from 'react';
+import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {Context} from "../context/BlogContextReducerHook";
 import {Feather} from '@expo/vector-icons';
 
 const IndexScreenStateHook = ({navigation}) => {
-    const {state, deleteBlogPost} = useContext(Context);
+    const {state, getBlogPosts, deleteBlogPost} = useContext(Context);
+
+    useEffect(() => {
+        getBlogPosts();
+    }, []);
 
     return (
         <View>
