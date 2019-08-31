@@ -20,7 +20,7 @@ const BlogPostForm = ({onSubmit, initialValues}) => {
                 onChangeText={text => setContent(text)}
             />
             <Button
-                title='Blog Gönderisini Kaydet'
+                title='BLOG GÖNDERİSİNİ KAYDET'
                 onPress={() => onSubmit(title, content)}
             />
         </View>
@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         borderWidth: 1,
         borderColor: 'black',
-        marginVertical: 15,
+        marginVertical: 5,
         marginHorizontal: 5,
         padding: 5
     },
     label: {
         fontSize: 20,
-        marginBottom: 5,
+        marginVertical: 5,
         marginLeft: 5
     }
 });

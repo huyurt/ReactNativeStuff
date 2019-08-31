@@ -11,9 +11,9 @@ const ShowScreen = ({navigation}) => {
     );
 
     return (
-        <View>
-            <Text>{blogPost.title}</Text>
-            <Text>{blogPost.content}</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>{blogPost.title}</Text>
+            <Text style={styles.content}>{blogPost.content}</Text>
         </View>
     );
 };
@@ -28,6 +28,18 @@ ShowScreen.navigationOptions = ({navigation}) => {
     };
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        padding: 10
+    },
+    title: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginBottom: 5
+    },
+    content: {
+        fontSize: 18
+    }
+});
 
 export default ShowScreen;
