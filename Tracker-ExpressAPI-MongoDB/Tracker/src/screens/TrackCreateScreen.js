@@ -1,34 +1,37 @@
-import React, {useState, useEffect} from 'react';
+import '../_mockLocations';
+import React, {useContext, useCallback} from 'react';
 import {StyleSheet} from 'react-native';
 import {Text} from 'react-native-elements';
-import {SafeAreaView} from "react-navigation";
-import {requestPermissionsAsync} from "expo-location";
+import {SafeAreaView, withNavigationFocus} from "react-navigation";
 import Map from '../components/Map';
+import {Context as LocationContext} from '../context/LocationContext';
+import useLocation from "../hooks/useLocation";
+import TrackForm from "../components/TrackForm";
+import {FontAwesome} from '@expo/vector-icons';
 
-const TrackCreateScreen = () => {
-    const [err, setErr] = useState(null);
-
-    const startWatching = async () => {
-        try {
-            await requestPermissionsAsync();
-        } catch (e) {
-            setErr(e);
-        }
-    };
-
-    useEffect(() => {
-        startWatching();
-    }, []);
+const TrackCreateScreen = ({isFocused}) => {
+    const {state: {recording}, addLocation} = useContext(LocationContext);
+    const callback = useCallback(location => {
+            addLocation(location, recording);
+        }, [recording]
+    );
+    const [err] = useLocation(isFocused || recording, callback);
 
     return (
         <SafeAreaView forceInset={{top: 'always'}}>
             <Text h4>Track Oluştur</Text>
             <Map/>
             {err ? <Text>Konum hizmetini aktifleştiriniz.</Text> : null}
+            <TrackForm/>
         </SafeAreaView>
     );
 };
 
+TrackCreateScreen.navigationOptions = {
+    title: 'Konumu Ekle',
+    tabBarIcon: <FontAwesome name='plus' size={20}/>
+};
+
 const styles = StyleSheet.create({});
 
-export default TrackCreateScreen;
+export default withNavigationFocus(TrackCreateScreen);
